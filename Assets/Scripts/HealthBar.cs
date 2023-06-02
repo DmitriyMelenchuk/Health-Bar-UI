@@ -12,16 +12,6 @@ public class HealthBar : MonoBehaviour
 
     private Coroutine _currentCoroutine;
 
-    public void ApplyHeal()
-    {
-        _player.TakeHeal(_heal);
-    }
-
-    public void ApplyDamage()
-    {
-        _player.TakeDamage(_damage);
-    }
-
     private void Awake()
     {
         InitializeSliderValue();

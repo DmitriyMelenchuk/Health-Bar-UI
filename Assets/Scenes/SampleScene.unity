@@ -374,6 +374,8 @@ MonoBehaviour:
   _player: {fileID: 1064466942}
   _slider: {fileID: 532895709}
   _duration: 10
+  _heal: 10
+  _damage: 10
 --- !u!1 &676420571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,9 +1325,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 532895710}
-        m_TargetAssemblyTypeName: HealthPlayerView, Assembly-CSharp
-        m_MethodName: ChangeValue
-        m_Mode: 4
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: ChangeDamage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1570,9 +1572,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 532895710}
-        m_TargetAssemblyTypeName: HealthPlayerView, Assembly-CSharp
-        m_MethodName: ChangeValue
-        m_Mode: 4
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: ChangeHeal
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
