@@ -7,8 +7,6 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Slider _slider;
     [SerializeField] private float _duration;
-    [SerializeField] private float _heal;
-    [SerializeField] private float _damage;
 
     private Coroutine _currentCoroutine;
 
