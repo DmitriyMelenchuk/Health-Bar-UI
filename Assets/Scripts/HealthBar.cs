@@ -7,19 +7,39 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Slider _slider;
     [SerializeField] private float _duration;
-    
+    [SerializeField] private float _heal;
+    [SerializeField] private float _damage;
+
     private Coroutine _currentCoroutine;
 
-    public void ChangeValue(float damage)
+    public void ApplyHeal()
     {
-        _player.TakeDamage(damage);
+        _player.TakeHeal(_heal);
+    }
 
-        StartState(SmoothlyChangeValue());
+    public void ApplyDamage()
+    {
+        _player.TakeDamage(_damage);
     }
 
     private void Awake()
     {
         InitializeSliderValue();
+    }
+
+    private void OnEnable()
+    {
+        _player.ChangedHealth += OnChangeValue;
+    }
+
+    private void OnDisable()
+    {
+        _player.ChangedHealth -= OnChangeValue;
+    }
+
+    private void OnChangeValue(float currentHealth)
+    {
+        StartState(SmoothlyChangeValue(currentHealth));
     }
 
     private void InitializeSliderValue()
@@ -28,11 +48,11 @@ public class HealthBar : MonoBehaviour
         _slider.value = _player.CurrentHealth;
     }
 
-    private IEnumerator SmoothlyChangeValue()
-    {     
-        while (_slider.value != _player.CurrentHealth)
+    private IEnumerator SmoothlyChangeValue(float currentHealth)
+    {
+        while (_slider.value != currentHealth)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHealth, _duration * Time.deltaTime);
+            _slider.value = Mathf.MoveTowards(_slider.value, currentHealth, _duration * Time.deltaTime);
 
             yield return null;
         }
